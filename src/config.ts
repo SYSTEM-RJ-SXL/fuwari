@@ -17,12 +17,12 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true,
-		src: "src/assets/images/demo-banner.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+		src: "https://get.2sb.org/https://res-cdn.rtxvdz.top/banner.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 		position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
 		credit: {
 			enable: true, // Display the credit text of the banner image
 			text: "rtxvdz", // Credit text to be displayed
-			url: "src/assets/images/demo-banner.png", // (Optional) URL link to the original artwork or artist's page
+			url: "https://get.2sb.org/https://res-cdn.rtxvdz.top/banner.png", // (Optional) URL link to the original artwork or artist's page
 		},
 	},
 	toc: {
