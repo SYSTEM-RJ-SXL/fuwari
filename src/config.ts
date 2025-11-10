@@ -22,7 +22,7 @@ export const siteConfig: SiteConfig = {
 		credit: {
 			enable: true, // Display the credit text of the banner image
 			text: "rtxvdz", // Credit text to be displayed
-			url: "assets/images/demo-banner.png", // (Optional) URL link to the original artwork or artist's page
+			url: "https://res-cdn.rtxvdz.top/banner.png", // (Optional) URL link to the original artwork or artist's page
 		},
 	},
 	toc: {
