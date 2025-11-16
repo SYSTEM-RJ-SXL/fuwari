@@ -12,8 +12,10 @@ lang: ''
 # 视频教程
 
 `因为have殡的bilibili审核不通过所以直接挂到博客`
+<video id="video" controls="" preload="none">
+      <source id="mp4" src="<video src="https://lz.qaiu.top/parser?url=https://rtxvdz.lanzn.com/i776p3b9hg0h&pwd=66664" controls="controls" width="500" height="300"></video>" type="video/mp4">
+</videos>
 
-    <video src="https://lz.qaiu.top/parser?url=https://rtxvdz.lanzn.com/i776p3b9hg0h&pwd=66664" controls="controls" width="500" height="300"></video>
 
 # 准备工作
 
