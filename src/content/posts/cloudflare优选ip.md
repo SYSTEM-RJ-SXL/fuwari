@@ -12,9 +12,7 @@ lang: ''
 # 视频教程
 
 `因为have殡的bilibili审核不通过所以直接挂到博客`
-<video id="video" controls="" preload="none">
-      <source id="mp4" src="<video src="https://cdn.gh-proxy.com/https://github.com/RTXVDZ/fuwari-rtxvdz/releases/download/1111/cloudflare.ip.mp4" controls="controls" width="500" height="300"></video>" type="video/mp4">
-</videos>
+[👉戳我看视频](https://sr.rtxvdz.top/cf)
 
 
 # 准备工作
