@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面无法访问 - Astro框架站点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .error-container {
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .error-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .error-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            color: #4facfe;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .error-message {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .astro-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #4facfe;
+            padding: 15px;
+            margin: 25px 0;
+            text-align: left;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .astro-info h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .astro-info p {
+            font-size: 15px;
+            color: #666;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #3a9df8 0%, #00d9e6 100%);
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        @media (max-width: 480px) {
+            .error-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .error-message {
+                font-size: 16px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">🚀</div>
+        <h1>页面无法访问</h1>
+        <div class="error-message">
+            抱歉，您请求的页面无法访问。这可能是因为：
+        </div>
+        
+        <div class="astro-info">
+            <h3>关于本站技术架构</h3>
+            <p>本站采用Astro框架构建，大部分资源无法直接访问，或该页面不存在。</p>
+        </div>
+        
+        <div class="error-message">
+            请检查您输入的URL是否正确，或点击下方按钮返回博客主站：
+        </div>
+        
+        <div class="action-buttons">
+            <a href="https://rtxvdz.top" class="btn btn-primary">返回博客主站</a>
+        </div>
+        
+        <div class="footer">
+            如需帮助，请联系网站管理员
+        </div>
+    </div>
+
+    <script>
+        // 添加简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const errorContainer = document.querySelector('.error-container');
+            errorContainer.style.opacity = '0';
+            errorContainer.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                errorContainer.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                errorContainer.style.opacity = '1';
+                errorContainer.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
