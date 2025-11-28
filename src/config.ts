@@ -54,7 +54,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "/favicon/favicon-light-192.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	avatar: "https://gitee.com/vdzdy/blog-cds/raw/master/111.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "rtxvdz",
 	bio: "成功的办法不止一种",
 	links: [
