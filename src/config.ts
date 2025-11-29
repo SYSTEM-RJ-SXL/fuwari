@@ -28,7 +28,7 @@ export const siteConfig: SiteConfig = {
 	},
 		background: {
 			enable: true, // Enable background image
-			src: "https://lz.qaiu.top/parser?url=https://www.lanzout.com/iFvB63aq595e&pwd=6666", // Background image URL (supports HTTPS)
+			src: "https://bing.img.run/rand.php", // Background image URL (supports HTTPS)
 			position: "center", // Background position: 'top', 'center', 'bottom'
 			size: "cover", // Background size: 'cover', 'contain', 'auto'
 			repeat: "no-repeat", // Background repeat: 'no-repeat', 'repeat', 'repeat-x', 'repeat-y'
