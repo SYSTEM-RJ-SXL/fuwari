@@ -46,6 +46,12 @@ export default defineConfig({
 			updateHead: true,
 			updateBodyClass: false,
 			globalInstance: true,
+			    icon({
+      include: {
+        mdi: ["*"],
+        "preprocess: vitePreprocess(),": ["*"],
+        "fa6-brands": ["*"],
+        "fa6-regular": ["*"],
 		}),
 		icon({
 			include: {
