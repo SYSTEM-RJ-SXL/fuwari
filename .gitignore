@@ -26,6 +26,10 @@ package-lock.json
 bun.lockb
 yarn.lock
 
+    package-lock.json
+    bun.lockb
+    yarn.lock
+    venv
 # ide
 .idea
 *.iml
