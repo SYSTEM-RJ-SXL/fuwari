@@ -1,5 +1,5 @@
 # about
- [本博客源码（原版）](https://github.com/saicaca/fuwari).
+ [本博客源码（原版）](https://bgithub.xyz/saicaca/fuwari).
 
 ::github{repo="rtxvdz/fuwari"}
 # 博客免责声明及版权引用规范
