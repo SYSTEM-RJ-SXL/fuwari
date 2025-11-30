@@ -21,11 +21,11 @@ const className = Astro.props.class;
                 路线选择
             </h3>
             <div class="space-y-2">
-                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" onclick="openRoute('https://rtxvdz.top')">
+                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-hk" onclick="openRoute('https://rtxvdz.top')">
                     <span class="text-white">香港CDN路线</span>
                     <span id="ping-hk" class="ping-indicator">●</span>
                 </div>
-                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" onclick="openRoute('https://n.rtxvdz.top')">
+                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-netlify" onclick="openRoute('https://n.rtxvdz.top')">
                     <span class="text-white">Netlify路线</span>
                     <span id="ping-netlify" class="ping-indicator">●</span>
                 </div>
@@ -52,6 +52,11 @@ const className = Astro.props.class;
     .ping-slow {
         color: #ef4444; /* 红色 - 超时/慢 */
     }
+    .current-route {
+        background: var(--primary) !important;
+        color: white !important;
+        font-weight: bold;
+    }
 </style>
 
 <script>
@@ -59,19 +64,30 @@ const className = Astro.props.class;
     async function testPing(url, timeout = 5000) {
         const start = Date.now();
         try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), timeout);
-            
-            const response = await fetch(url, {
-                method: 'HEAD',
-                signal: controller.signal
+            // 使用 image 请求进行延迟测试（更可靠）
+            return new Promise((resolve) => {
+                const img = new Image();
+                const timeoutId = setTimeout(() => {
+                    resolve({ ping: timeout, success: false });
+                }, timeout);
+                
+                img.onload = () => {
+                    clearTimeout(timeoutId);
+                    const end = Date.now();
+                    const ping = end - start;
+                    resolve({ ping, success: true });
+                };
+                
+                img.onerror = () => {
+                    clearTimeout(timeoutId);
+                    const end = Date.now();
+                    const ping = end - start;
+                    resolve({ ping, success: false });
+                };
+                
+                // 添加时间戳以避免缓存
+                img.src = url + '/favicon.ico?' + Date.now();
             });
-            
-            clearTimeout(timeoutId);
-            const end = Date.now();
-            const ping = end - start;
-            
-            return { ping, success: response.ok };
         } catch (error) {
             const end = Date.now();
             const ping = end - start;
@@ -110,8 +126,29 @@ const className = Astro.props.class;
         window.open(url, '_blank');
     }
 
+    // 高亮当前域名
+    function highlightCurrentRoute() {
+        const currentHost = window.location.hostname;
+        const routeHk = document.getElementById('route-hk');
+        const routeNetlify = document.getElementById('route-netlify');
+        
+        // 移除之前的高亮
+        routeHk?.classList.remove('current-route');
+        routeNetlify?.classList.remove('current-route');
+        
+        // 根据当前域名高亮对应项
+        if (currentHost === 'rtxvdz.top' || currentHost.includes('rtxvdz')) {
+            routeHk?.classList.add('current-route');
+        } else if (currentHost.includes('n.rtxvdz') || currentHost.includes('netlify')) {
+            routeNetlify?.classList.add('current-route');
+        }
+    }
+
     // 页面加载后开始测试延迟
     document.addEventListener('DOMContentLoaded', async () => {
+        // 高亮当前域名
+        highlightCurrentRoute();
+        
         // 测试香港CDN路线延迟
         updatePingIndicator('ping-hk', 'https://rtxvdz.top');
         
