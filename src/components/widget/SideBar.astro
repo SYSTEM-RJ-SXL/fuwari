@@ -14,9 +14,26 @@ const className = Astro.props.class;
 <div id="sidebar" class:list={[className, "w-full"]}>
     <div class="flex flex-col w-full gap-4 mb-4">
         <Profile></Profile>
+        <div class="card-base p-4 rounded-[var(--radius-large)] transition bg-[var(--card-bg)]">
+            <h3 class="font-bold text-lg mb-3 text-neutral-900 dark:text-neutral-100 transition relative ml-3
+                before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+                before:absolute before:-left-3 before:top-[0.33rem]">
+                路线选择
+            </h3>
+            <select id="route-selector" class="w-full p-2 rounded-md bg-[var(--float-panel-bg)] text-[var(--text)] border border-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" onchange="changeRoute(this.value)">
+                <option value="https://rtxvdz.top">香港CDN路线</option>
+                <option value="https://n.rtxvdz.top">Netlify路线</option>
+            </select>
+        </div>
     </div>
     <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4">
         <Categories class="onload-animation" style="animation-delay: 150ms"></Categories>
         <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
     </div>
 </div>
+
+<script>
+    function changeRoute(url) {
+        window.open(url, '_blank');
+    }
+</script>
