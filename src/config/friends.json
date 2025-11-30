@@ -1,26 +1,20 @@
 [
   {
-    "name": "Astro",
-    "icon": "https://avatars.githubusercontent.com/u/44914786?s=48&v=4",
-    "description": "The web framework for content-driven websites. ⭐️ Star to support our work!",
-    "url": "https://github.com/withastro/astro"
+    "name": "mpss我的世界服务器",
+    "icon": "https://i.mcmod.cn/item/icon/128x128/0/10.png?v=15",
+    "description": "欢迎游玩喵~",
+    "url": "https://svmpss.top"
   },
   {
-    "name": "鈴奈咲桜的Blog",
-    "icon": "https://q2.qlogo.cn/headimg_dl?dst_uin=2731443459&spec=0",
-    "description": "愛することを忘れないで",
-    "url": "https://blog.sakura.ink/"
+    "name": "橡木云",
+    "icon": "https://idc.xmgod.site/upload/logo.png",
+    "description": "超超超……级便宜的服务器，品质有保障！",
+    "url": "https://idc.xmgod.site/"
   },
   {
-    "name": "yogurtsのblogs",
-    "icon": "https://yogurts.top/img/avatar.webp",
-    "description": "Yogurtsの博客",
-    "url": "https://yogurts.top/"
-  },
-  {
-    "name": "fishcpy的小破站",
-    "icon": "https://www.fis.ink/img/logo.png",
-    "description": "非淡泊无以明志，非宁静无以致远",
-    "url": "https://blog.fis.ink"
+    "name": "yCENzh",
+    "icon": "https://fuwari.oh1.top/avatar.webp",
+    "description": "爱你所爱！",
+    "url": "https://fuwari.oh1.top/"
   }
 ]
