@@ -20,10 +20,16 @@ const className = Astro.props.class;
                 before:absolute before:-left-3 before:top-[0.33rem]">
                 路线选择
             </h3>
-            <select id="route-selector" class="w-full p-2 rounded-md bg-[var(--float-panel-bg)] text-[var(--text)] border border-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" onchange="changeRoute(this.value)">
-                <option value="https://rtxvdz.top">香港CDN路线</option>
-                <option value="https://n.rtxvdz.top">Netlify路线</option>
-            </select>
+            <div class="space-y-2">
+                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" onclick="openRoute('https://rtxvdz.top')">
+                    <span class="text-white">香港CDN路线</span>
+                    <span id="ping-hk" class="ping-indicator">●</span>
+                </div>
+                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" onclick="openRoute('https://n.rtxvdz.top')">
+                    <span class="text-white">Netlify路线</span>
+                    <span id="ping-netlify" class="ping-indicator">●</span>
+                </div>
+            </div>
         </div>
     </div>
     <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4">
@@ -32,8 +38,90 @@ const className = Astro.props.class;
     </div>
 </div>
 
+<style>
+    .ping-indicator {
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+    }
+    .ping-fast {
+        color: #10b981; /* 绿色 - 流畅 */
+    }
+    .ping-medium {
+        color: #f59e0b; /* 黄色 - 中等 */
+    }
+    .ping-slow {
+        color: #ef4444; /* 红色 - 超时/慢 */
+    }
+</style>
+
 <script>
-    function changeRoute(url) {
+    // 测试网络延迟的函数
+    async function testPing(url, timeout = 5000) {
+        const start = Date.now();
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeout);
+            
+            const response = await fetch(url, {
+                method: 'HEAD',
+                signal: controller.signal
+            });
+            
+            clearTimeout(timeoutId);
+            const end = Date.now();
+            const ping = end - start;
+            
+            return { ping, success: response.ok };
+        } catch (error) {
+            const end = Date.now();
+            const ping = end - start;
+            return { ping, success: false };
+        }
+    }
+
+    // 更新延迟指示器
+    async function updatePingIndicator(elementId, url) {
+        const indicator = document.getElementById(elementId);
+        if (!indicator) return;
+        
+        // 测试延迟
+        const result = await testPing(url);
+        const ping = result.ping;
+        
+        // 移除旧的类
+        indicator.classList.remove('ping-fast', 'ping-medium', 'ping-slow');
+        
+        // 根据延迟添加适当的类
+        if (result.success) {
+            if (ping < 200) {
+                indicator.classList.add('ping-fast'); // 绿色 - 流畅
+            } else if (ping < 500) {
+                indicator.classList.add('ping-medium'); // 黄色 - 中等
+            } else {
+                indicator.classList.add('ping-slow'); // 红色 - 慢
+            }
+        } else {
+            indicator.classList.add('ping-slow'); // 红色 - 超时
+        }
+    }
+
+    // 打开路由链接
+    function openRoute(url) {
         window.open(url, '_blank');
     }
+
+    // 页面加载后开始测试延迟
+    document.addEventListener('DOMContentLoaded', async () => {
+        // 测试香港CDN路线延迟
+        updatePingIndicator('ping-hk', 'https://rtxvdz.top');
+        
+        // 测试Netlify路线延迟
+        updatePingIndicator('ping-netlify', 'https://n.rtxvdz.top');
+        
+        // 每30秒更新一次延迟（可根据需要调整）
+        setInterval(() => {
+            updatePingIndicator('ping-hk', 'https://rtxvdz.top');
+            updatePingIndicator('ping-netlify', 'https://n.rtxvdz.top');
+        }, 30000);
+    });
 </script>
