@@ -137,9 +137,9 @@ const className = Astro.props.class;
         routeNetlify?.classList.remove('current-route');
         
         // 根据当前域名高亮对应项
-        if (currentHost === 'rtxvdz.top' || currentHost.includes('rtxvdz')) {
+        if (currentHost.includes('rtxvdz.top')) {
             routeHk?.classList.add('current-route');
-        } else if (currentHost.includes('n.rtxvdz') || currentHost.includes('netlify')) {
+        } else if (currentHost.includes('n.rtxvdz.top')) {
             routeNetlify?.classList.add('current-route');
         }
     }
