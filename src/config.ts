@@ -55,8 +55,8 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		LinkPreset.About,
 		{
-			name: "本站已屏蔽所有海外的访问",
-			url: "https://www.gov.cn", // Internal links should not include the base path, as it is automatically added
+			name: "友链",
+			url: "/friends", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
 		},
 	],
