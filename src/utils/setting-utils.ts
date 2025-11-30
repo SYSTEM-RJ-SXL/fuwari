@@ -4,7 +4,7 @@ import {
 	DEFAULT_THEME,
 	LIGHT_MODE,
 } from "@constants/constants.ts";
-import { expressiveCodeConfig } from "@/config";
+import { expressiveCodeConfig, siteConfig } from "@/config";
 import type { LIGHT_DARK_MODE } from "@/types/config";
 
 export function getDefaultHue(): number {
@@ -28,20 +28,26 @@ export function setHue(hue: number): void {
 }
 
 export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
-	switch (theme) {
-		case LIGHT_MODE:
-			document.documentElement.classList.remove("dark");
-			break;
-		case DARK_MODE:
-			document.documentElement.classList.add("dark");
-			break;
-		case AUTO_MODE:
-			if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-				document.documentElement.classList.add("dark");
-			} else {
+	// 如果强制使用暗色模式，则忽略其他设置
+	if (siteConfig.themeColor.forceDarkMode) {
+		document.documentElement.classList.add("dark");
+	} else {
+		// 否则按照用户设置或系统偏好
+		switch (theme) {
+			case LIGHT_MODE:
 				document.documentElement.classList.remove("dark");
-			}
-			break;
+				break;
+			case DARK_MODE:
+				document.documentElement.classList.add("dark");
+				break;
+			case AUTO_MODE:
+				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					document.documentElement.classList.add("dark");
+				} else {
+					document.documentElement.classList.remove("dark");
+				}
+				break;
+		}
 	}
 
 	// Set the theme for Expressive Code
@@ -52,10 +58,17 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 }
 
 export function setTheme(theme: LIGHT_DARK_MODE): void {
-	localStorage.setItem("theme", theme);
+	// 如果强制使用暗色模式，则不需要存储主题设置
+	if (!siteConfig.themeColor.forceDarkMode) {
+		localStorage.setItem("theme", theme);
+	}
 	applyThemeToDocument(theme);
 }
 
 export function getStoredTheme(): LIGHT_DARK_MODE {
+	// 如果强制使用暗色模式，则始终返回暗色模式
+	if (siteConfig.themeColor.forceDarkMode) {
+		return DARK_MODE;
+	}
 	return (localStorage.getItem("theme") as LIGHT_DARK_MODE) || DEFAULT_THEME;
 }
