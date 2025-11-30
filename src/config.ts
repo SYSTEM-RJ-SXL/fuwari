@@ -53,7 +53,6 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
-		LinkPreset.Friends,
 		LinkPreset.About,
 		{
 			name: "本站已屏蔽所有海外的访问",
