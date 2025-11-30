@@ -74,35 +74,37 @@ const className = Astro.props.class;
             // 创建一个唯一的URL以避免缓存
             const testUrl = url + '/?ping=' + Date.now();
             
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), timeout);
-            
-            // 发送 HEAD 请求，对服务器压力更小
-            const response = await fetch(testUrl, {
-                method: 'HEAD', // 使用 HEAD 请求，只获取响应头
-                signal: controller.signal,
-                mode: 'cors',
-                cache: 'no-cache'
+            // 使用 Image 对象进行跨域请求，避免 CORS 限制
+            return new Promise((resolve) => {
+                const img = new Image();
+                const timeoutId = setTimeout(() => {
+                    // 超时处理
+                    resolve({ ping: timeout, success: false });
+                }, timeout);
+                
+                img.onload = () => {
+                    clearTimeout(timeoutId);
+                    const end = Date.now();
+                    const ping = end - start;
+                    resolve({ ping, success: true });
+                };
+                
+                img.onerror = () => {
+                    clearTimeout(timeoutId);
+                    const end = Date.now();
+                    const ping = end - start;
+                    resolve({ ping, success: false });
+                };
+                
+                // 设置跨域属性
+                img.crossOrigin = 'anonymous';
+                
+                // 开始加载图片
+                img.src = url + '/favicon.ico?' + Date.now();
             });
-            
-            clearTimeout(timeoutId);
-            const end = Date.now();
-            const ping = end - start;
-            
-            // 检查响应状态，只要能连接上就算成功
-            const success = response.ok || response.status < 500;
-            
-            return { ping, success };
         } catch (error) {
-            clearTimeout(timeoutId);
             const end = Date.now();
             const ping = end - start;
-            
-            // 如果请求被中止（超时），返回超时信息
-            if (error.name === 'AbortError') {
-                return { ping: timeout, success: false };
-            }
-            // 其他错误也返回失败
             return { ping, success: false };
         }
     }
@@ -217,10 +219,8 @@ const className = Astro.props.class;
         // 添加点击事件监听器
         addClickListeners();
         
-        // 测试香港CDN路线延迟
+        // 立即测试两个路线的延迟
         updatePingIndicator('ping-hk', 'https://rtxvdz.top');
-        
-        // 测试Netlify路线延迟
         updatePingIndicator('ping-netlify', 'https://n.rtxvdz.top');
         
         // 每30秒更新一次延迟（可根据需要调整）
