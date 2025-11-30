@@ -21,11 +21,11 @@ const className = Astro.props.class;
                 路线选择
             </h3>
             <div class="space-y-2">
-                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-hk" onclick="openRoute('https://rtxvdz.top')">
+                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-hk" data-url="https://rtxvdz.top">
                     <span class="text-white">香港CDN路线</span>
                     <span id="ping-hk" class="ping-indicator">●</span>
                 </div>
-                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-netlify" onclick="openRoute('https://n.rtxvdz.top')">
+                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-netlify" data-url="https://n.rtxvdz.top">
                     <span class="text-white">Netlify路线</span>
                     <span id="ping-netlify" class="ping-indicator">●</span>
                 </div>
@@ -144,10 +144,33 @@ const className = Astro.props.class;
         }
     }
 
+    // 添加点击事件监听器
+    function addClickListeners() {
+        const routeHk = document.getElementById('route-hk');
+        const routeNetlify = document.getElementById('route-netlify');
+        
+        if (routeHk) {
+            routeHk.addEventListener('click', function() {
+                const url = this.getAttribute('data-url');
+                openRoute(url);
+            });
+        }
+        
+        if (routeNetlify) {
+            routeNetlify.addEventListener('click', function() {
+                const url = this.getAttribute('data-url');
+                openRoute(url);
+            });
+        }
+    }
+
     // 页面加载后开始测试延迟
     document.addEventListener('DOMContentLoaded', async () => {
         // 高亮当前域名
         highlightCurrentRoute();
+        
+        // 添加点击事件监听器
+        addClickListeners();
         
         // 测试香港CDN路线延迟
         updatePingIndicator('ping-hk', 'https://rtxvdz.top');
