@@ -23,11 +23,17 @@ const className = Astro.props.class;
             <div class="space-y-2">
                 <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-hk" data-url="https://rtxvdz.top">
                     <span class="text-white">香港CDN路线</span>
-                    <span id="ping-hk" class="ping-indicator">●</span>
+                    <div class="flex items-center">
+                        <span id="ping-hk" class="ping-indicator">●</span>
+                        <span id="ping-hk-value" class="ml-1 text-xs text-gray-400">--ms</span>
+                    </div>
                 </div>
                 <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-netlify" data-url="https://n.rtxvdz.top">
                     <span class="text-white">Netlify路线</span>
-                    <span id="ping-netlify" class="ping-indicator">●</span>
+                    <div class="flex items-center">
+                        <span id="ping-netlify" class="ping-indicator">●</span>
+                        <span id="ping-netlify-value" class="ml-1 text-xs text-gray-400">--ms</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,6 +112,16 @@ const className = Astro.props.class;
         const indicator = document.getElementById(elementId);
         if (!indicator) return;
         
+        // 根据 elementId 确定对应的延迟数值元素 ID
+        let valueElementId = '';
+        if (elementId === 'ping-hk') {
+            valueElementId = 'ping-hk-value';
+        } else if (elementId === 'ping-netlify') {
+            valueElementId = 'ping-netlify-value';
+        }
+        
+        const valueElement = document.getElementById(valueElementId);
+        
         // 测试延迟
         const result = await testPing(url);
         const ping = result.ping;
@@ -122,12 +138,32 @@ const className = Astro.props.class;
             } else {
                 indicator.classList.add('ping-slow'); // 红色 - 慢
             }
+            
+            // 更新延迟数值显示
+            if (valueElement) {
+                valueElement.textContent = `${ping}ms`;
+                valueElement.classList.remove('text-gray-400');
+                if (ping < 200) {
+                    valueElement.classList.add('text-green-500');
+                } else if (ping < 500) {
+                    valueElement.classList.add('text-yellow-500');
+                } else {
+                    valueElement.classList.add('text-red-500');
+                }
+            }
         } else {
             indicator.classList.add('ping-slow'); // 红色 - 超时
+            
+            // 更新延迟数值显示为超时
+            if (valueElement) {
+                valueElement.textContent = '超时';
+                valueElement.classList.remove('text-green-500', 'text-yellow-500');
+                valueElement.classList.add('text-red-500');
+            }
         }
         
         // 在元素上设置延迟信息，便于调试
-        indicator.title = `延迟: ${ping}ms`;
+        indicator.title = `延迟: ${result.success ? ping + 'ms' : '超时'}`;
     }
 
     // 打开路由链接
