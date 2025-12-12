@@ -8,7 +8,7 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "rtxvdz",
+	title: "2fo",
 	subtitle: "blog",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
@@ -64,8 +64,8 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "/111.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-	name: "rtxvdz",
-	bio: "成功的办法不止一种",
+	name: "这瓜甜不甜？",
+	bio: "要是甜我肯定要啊",
 	links: [
 		{
 			name: "bilibili",
