@@ -21,15 +21,15 @@ const className = Astro.props.class;
                 路线选择
             </h3>
             <div class="space-y-2">
-                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-hk" data-url="https://rtxvdz.top">
-                    <span class="text-white">双CDN路线（推荐这个）</span>
+                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-hk" data-url="https://2fo.cc">
+                    <span class="text-white">scdn三网回国</span>
                     <div class="flex items-center">
                         <span id="ping-hk" class="ping-indicator">●</span>
                         <span id="ping-hk-value" class="ml-1 text-xs text-gray-400">--ms</span>
                     </div>
                 </div>
-                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-netlify" data-url="https://v.rtxvdz.top">
-                    <span class="text-white">Vercel(备用，打不开试试这个)</span>
+                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-netlify" data-url="https://v.2fo.cc">
+                    <span class="text-white">Vercel(备用)</span>
                     <div class="flex items-center">
                         <span id="ping-netlify" class="ping-indicator">●</span>
                         <span id="ping-netlify-value" class="ml-1 text-xs text-gray-400">--ms</span>
@@ -262,9 +262,9 @@ const className = Astro.props.class;
         routeNetlify?.classList.remove('current-route');
         
         // 根据当前域名高亮对应项
-        if (currentHost === 'rtxvdz.top' || currentHost === 'www.rtxvdz.top') {
+        if (currentHost === '2fo.cc' || currentHost === 'www.2fo.cc') {
             routeHk?.classList.add('current-route');
-        } else if (currentHost === 'v.rtxvdz.top' || currentHost === 'www.v.rtxvdz.top') {
+        } else if (currentHost === 'v.2fo.cc' || currentHost === 'www.v.2fo.cc') {
             routeNetlify?.classList.add('current-route');
         }
     }
@@ -298,13 +298,13 @@ const className = Astro.props.class;
         addClickListeners();
         
         // 立即测试两个路线的延迟
-        updatePingIndicator('ping-hk', 'https://rtxvdz.top');
-        updatePingIndicator('ping-netlify', 'https://v.rtxvdz.top');
+        updatePingIndicator('ping-hk', 'https://2fo.cc');
+        updatePingIndicator('ping-netlify', 'https://v.2fo.cc');
         
         // 每60秒更新一次延迟（可根据需要调整，延长间隔以减少请求频率）
         setInterval(() => {
-            updatePingIndicator('ping-hk', 'https://rtxvdz.top');
-            updatePingIndicator('ping-netlify', 'https://v.rtxvdz.top');
+            updatePingIndicator('ping-hk', 'https://2fo.cc');
+            updatePingIndicator('ping-netlify', 'https://v.2fo.cc');
         }, 60000);
     });
 </script>
