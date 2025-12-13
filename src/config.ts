@@ -8,13 +8,13 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "2fo",
-	subtitle: "blog",
+	title: "2fo'blog",
+	subtitle: "",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
 		hue: 275, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
 		fixed: true, // Hide the theme color picker for visitors
-		forceDarkMode: true, // 强制使用暗色主题
+		forceDarkMode: true, // 强制使用暗色主题(已修改上游功能缺陷)
 	},
 	banner: {
 		enable: false,
@@ -40,12 +40,11 @@ export const siteConfig: SiteConfig = {
 		depth: 2, // Maximum heading depth to show in the table, from 1 to 3
 	},
 	favicon: [
-		// Leave this array empty to use the default favicon
-		// {
-		//   src: '/favicon/icon.png',    // Path of the favicon, relative to the /public directory
-		//   theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
-		//   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
-		// }
+		 {
+		   src: '/111.jpg',    // Path of the favicon, relative to the /public directory
+		   theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
+		   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
+		 }
 	],
 };
 
@@ -64,8 +63,8 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "/111.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-	name: "这瓜甜不甜？",
-	bio: "要是甜我肯定要啊",
+	name: "七天困一周",
+	bio: "关注B站“七天困一周”谢谢喵~",
 	links: [
 		{
 			name: "bilibili",
