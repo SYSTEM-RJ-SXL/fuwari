@@ -1,3 +1,21 @@
+ ---
+
+title: 注册免费域名
+
+published: 2025-12.13
+
+description: '关于如何注册免费域名'
+
+tags: [域名]
+
+categories: '注册域名'
+
+draft: false
+
+lang: ' '
+
+---
+
 # 注册来自美国非盈利组织的免费qzz.io域名！
 
 bilibili视频:
