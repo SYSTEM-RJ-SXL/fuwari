@@ -1,7 +1,6 @@
 ---
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import friendsData from "../config/friends.json";
-import Giscus from "../components/misc/Giscus.astro";
 
 // 从JSON文件加载友链数据
 const friends = friendsData;
@@ -28,20 +27,13 @@ const friends = friendsData;
                 ))}
             </div>
             <div class="mt-8 text-center">
-                <p class="text-sm text-neutral-600 dark:text-neutral-400">你也想上榜？可以评论哦~</p>
+                <p class="text-sm text-neutral-600 dark:text-neutral-400">78</p>
             </div>
         </div>
     </div>
     
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mt-4">
         <div class="card-base z-10 px-6 md:px-9 py-6 relative w-full">
-             <Giscus
-                repo="RTXVDZ/pinglun"
-                repoId="R_kgDOQfRWyg"
-                category="Announcements"
-                categoryId="DIC_kwDOQfRWys4CzL22"
-                lang="zh-CN"
-            />
         </div>
     </div>
 </MainGridLayout>
