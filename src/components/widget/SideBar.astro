@@ -18,18 +18,18 @@ const className = Astro.props.class;
             <h3 class="font-bold text-lg mb-3 text-neutral-900 dark:text-neutral-100 transition relative ml-3
                 before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
                 before:absolute before:-left-3 before:top-[0.33rem]">
-                路线选择
+                站点选择
             </h3>
             <div class="space-y-2">
-                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-hk" data-url="https://2fo.cc">
-                    <span class="text-white">scdn三网回国</span>
+                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-hk" data-url="https://mc.svmpss.top">
+                    <span class="text-white">原服务器介绍站点</span>
                     <div class="flex items-center">
                         <span id="ping-hk" class="ping-indicator">●</span>
                         <span id="ping-hk-value" class="ml-1 text-xs text-gray-400">--ms</span>
                     </div>
                 </div>
-                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-netlify" data-url="https://v.2fo.cc">
-                    <span class="text-white">Vercel(备用)</span>
+                <div class="flex items-center justify-between p-2 rounded-md hover:bg-[var(--float-panel-bg)] transition cursor-pointer route-item" id="route-netlify" data-url="https://svmpss.top">
+                    <span class="text-white">博客</span>
                     <div class="flex items-center">
                         <span id="ping-netlify" class="ping-indicator">●</span>
                         <span id="ping-netlify-value" class="ml-1 text-xs text-gray-400">--ms</span>
@@ -262,9 +262,9 @@ const className = Astro.props.class;
         routeNetlify?.classList.remove('current-route');
         
         // 根据当前域名高亮对应项
-        if (currentHost === '2fo.cc' || currentHost === 'www.2fo.cc') {
+        if (currentHost === 'svmpss.top' || currentHost === 'www.svmpss.top') {
             routeHk?.classList.add('current-route');
-        } else if (currentHost === 'v.2fo.cc' || currentHost === 'www.v.2fo.cc') {
+        } else if (currentHost === 'mc.svmpss.top' || currentHost === 'www.mc.svmpss.top') {
             routeNetlify?.classList.add('current-route');
         }
     }
@@ -298,13 +298,13 @@ const className = Astro.props.class;
         addClickListeners();
         
         // 立即测试两个路线的延迟
-        updatePingIndicator('ping-hk', 'https://2fo.cc');
-        updatePingIndicator('ping-netlify', 'https://v.2fo.cc');
+        updatePingIndicator('ping-hk', 'https://svmpss.top');
+        updatePingIndicator('ping-netlify', 'https://mc.svmpss.top');
         
         // 每60秒更新一次延迟（可根据需要调整，延长间隔以减少请求频率）
         setInterval(() => {
-            updatePingIndicator('ping-hk', 'https://2fo.cc');
-            updatePingIndicator('ping-netlify', 'https://v.2fo.cc');
+            updatePingIndicator('ping-hk', 'https://svmpss.top');
+            updatePingIndicator('ping-netlify', 'https://mc.svmpss.top');
         }, 60000);
     });
 </script>
