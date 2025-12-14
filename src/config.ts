@@ -8,13 +8,13 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "2fo",
+	title: "rj-sxl",
 	subtitle: "blog",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
 		hue: 275, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
-		fixed: true, // Hide the theme color picker for visitors
-		forceDarkMode: true, // 强制使用暗色主题(已修改上游功能缺陷)
+		fixed: false, // Hide the theme color picker for visitors
+		forceDarkMode: false, // 强制使用暗色主题(已修改上游功能缺陷)
 	},
 	banner: {
 		enable: false,
@@ -41,7 +41,7 @@ export const siteConfig: SiteConfig = {
 	},
 	favicon: [
 		 {
-		   src: '/111.jpg',    // Path of the favicon, relative to the /public directory
+		   src: 'https://lz.qaiu.top/parser?url=https://rj.lanzn.com/iK8xX3dlys9e&pwd=7496',    // Path of the favicon, relative to the /public directory
 		   theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
 		   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
 		 }
@@ -62,24 +62,24 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "/111.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-	name: "七天困一周",
-	bio: "关注B站“七天困一周”谢谢喵~",
+	avatar: "https://lz.qaiu.top/parser?url=https://rj.lanzn.com/iK8xX3dlys9e&pwd=7496", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	name: "rj-sxl",
+	bio: "无人扶我青云志， 我自踏雪至山巅。",
 	links: [
 		{
 			name: "bilibili",
 			icon: "fa6-brands:bilibili", 
-			url: "https://b23.tv/slUca1M",
+			url: "https://b23.tv/A0d3NPU",
 		},
 		{
 			name: "QQ",
 			icon: "fa6-brands:qq",
-			url: "https://qm.qq.com/q/57Jx7nqmeY",
+			url: "https://qm.qq.com/q/YmZeTwlvCq",
 		},
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github",
-			url: "https://github.com/rtxvdz",
+			url: "https://github.com/SYSTEM-RJ-SXL",
 		},
 	],
 };
